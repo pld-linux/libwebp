@@ -5,13 +5,13 @@
 Summary:	WebP image codec library and tools
 Summary(pl.UTF-8):	Biblioteka i narzędzia do kodeka obrazów WebP
 Name:		libwebp
-Version:	0.1.2
+Version:	0.1.3
 Release:	1
 License:	BSD
 Group:		Libraries
 #Source0Download: http://code.google.com/p/webp/downloads/list
 Source0:	http://webp.googlecode.com/files/%{name}-%{version}.tar.gz
-# Source0-md5:	5534f6e3c8b9f5851a9a5b56bf78f2b0
+# Source0-md5:	254d4670e14e9ed881f0536b006ab336
 URL:		http://code.google.com/speed/webp/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -64,8 +64,6 @@ Statyczna biblioteka WebP.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-# create directories if necessary
-#install -d $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
@@ -85,7 +83,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/cwebp
 %attr(755,root,root) %{_bindir}/dwebp
 %attr(755,root,root) %{_libdir}/libwebp.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libwebp.so.0
+%attr(755,root,root) %ghost %{_libdir}/libwebp.so.2
 %{_mandir}/man1/cwebp.1*
 %{_mandir}/man1/dwebp.1*
 
