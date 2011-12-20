@@ -6,7 +6,7 @@ Summary:	WebP image codec library and tools
 Summary(pl.UTF-8):	Biblioteka i narzędzia do kodeka obrazów WebP
 Name:		libwebp
 Version:	0.1.3
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries
 #Source0Download: http://code.google.com/p/webp/downloads/list
