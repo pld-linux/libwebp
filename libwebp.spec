@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_without	apidocs		# do not build and package API docs
-#
+
 Summary:	WebP image codec library and tools
 Summary(pl.UTF-8):	Biblioteka i narzędzia do kodeka obrazów WebP
 Name:		libwebp
-Version:	0.1.3
-Release:	3
+Version:	0.1.99
+Release:	1
 License:	BSD
 Group:		Libraries
 #Source0Download: http://code.google.com/p/webp/downloads/list
 Source0:	http://webp.googlecode.com/files/%{name}-%{version}.tar.gz
-# Source0-md5:	254d4670e14e9ed881f0536b006ab336
-URL:		http://code.google.com/speed/webp/
+# Source0-md5:	aca4d43f3e8d1d9f87136d116acfb68d
+URL:		https://developers.google.com/speed/webp/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	libjpeg-devel
@@ -55,7 +55,7 @@ Statyczna biblioteka WebP.
 
 %build
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
@@ -83,7 +83,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/cwebp
 %attr(755,root,root) %{_bindir}/dwebp
 %attr(755,root,root) %{_libdir}/libwebp.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libwebp.so.2
+%attr(755,root,root) %ghost %{_libdir}/libwebp.so.3
 %{_mandir}/man1/cwebp.1*
 %{_mandir}/man1/dwebp.1*
 
