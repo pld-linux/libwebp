@@ -1,14 +1,20 @@
+#
+# Conditional build:
+%bcond_without	opengl	# OpenGL-based visualizer
+#
 Summary:	WebP image codec libraries
 Summary(pl.UTF-8):	Biblioteki do kodeka obrazów WebP
 Name:		libwebp
-Version:	0.3.0
+Version:	0.3.1
 Release:	1
 License:	BSD
 Group:		Libraries
 #Source0Download: http://code.google.com/p/webp/downloads/list
 Source0:	http://webp.googlecode.com/files/%{name}-%{version}.tar.gz
-# Source0-md5:	4183f4f51ada98976f14e7bd51f30938
+# Source0-md5:	dc862bb4006d819b7587767a9e83d31f
 URL:		https://developers.google.com/speed/webp/
+%{?with_opengl:BuildRequires:	OpenGL-devel}
+%{?with_opengl:BuildRequires:	OpenGL-glut-devel}
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	giflib-devel
@@ -121,6 +127,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/cwebp
 %attr(755,root,root) %{_bindir}/dwebp
 %attr(755,root,root) %{_bindir}/gif2webp
+%{?with_opengl:%attr(755,root,root) %{_bindir}/vwebp}
 %attr(755,root,root) %{_bindir}/webpmux
 %{_mandir}/man1/cwebp.1*
 %{_mandir}/man1/dwebp.1*
