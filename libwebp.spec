@@ -14,7 +14,7 @@ Source0:	http://downloads.webmproject.org/releases/webp/%{name}-%{version}.tar.g
 URL:		https://developers.google.com/speed/webp/
 %{?with_opengl:BuildRequires:	OpenGL-devel}
 %{?with_opengl:BuildRequires:	OpenGL-glut-devel}
-BuildRequires:	autoconf >= 2.50
+BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake
 BuildRequires:	giflib-devel
 BuildRequires:	libjpeg-devel
@@ -131,4 +131,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/cwebp.1*
 %{_mandir}/man1/dwebp.1*
 %{_mandir}/man1/gif2webp.1*
+%{?with_opengl:%{_mandir}/man1/vwebp.1*}
 %{_mandir}/man1/webpmux.1*
