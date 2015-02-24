@@ -6,7 +6,7 @@ Summary:	WebP image codec libraries
 Summary(pl.UTF-8):	Biblioteki do kodeka obrazów WebP
 Name:		libwebp
 Version:	0.4.2
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries
 Source0:	http://downloads.webmproject.org/releases/webp/%{name}-%{version}.tar.gz
