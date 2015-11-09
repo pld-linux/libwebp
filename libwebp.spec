@@ -5,12 +5,13 @@
 Summary:	WebP image codec libraries
 Summary(pl.UTF-8):	Biblioteki do kodeka obrazów WebP
 Name:		libwebp
-Version:	0.4.2
-Release:	2
+Version:	0.4.4
+Release:	1
 License:	BSD
 Group:		Libraries
+#Source0Download: http://downloads.webmproject.org/releases/webp/index.html
 Source0:	http://downloads.webmproject.org/releases/webp/%{name}-%{version}.tar.gz
-# Source0-md5:	404f45a7d695217db2bb49e1e22ad49f
+# Source0-md5:	b737062cf688e502b940b460ddc3015f
 URL:		https://developers.google.com/speed/webp/
 %{?with_opengl:BuildRequires:	OpenGL-devel}
 %{?with_opengl:BuildRequires:	OpenGL-glut-devel}
