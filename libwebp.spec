@@ -5,13 +5,13 @@
 Summary:	WebP image codec libraries
 Summary(pl.UTF-8):	Biblioteki do kodeka obrazów WebP
 Name:		libwebp
-Version:	0.4.4
+Version:	0.5.0
 Release:	1
 License:	BSD
 Group:		Libraries
 #Source0Download: http://downloads.webmproject.org/releases/webp/index.html
 Source0:	http://downloads.webmproject.org/releases/webp/%{name}-%{version}.tar.gz
-# Source0-md5:	b737062cf688e502b940b460ddc3015f
+# Source0-md5:	ba81eb9bf23e3c69a2f5cc8dcdb5938f
 URL:		https://developers.google.com/speed/webp/
 %{?with_opengl:BuildRequires:	OpenGL-devel}
 %{?with_opengl:BuildRequires:	OpenGL-glut-devel}
@@ -78,6 +78,7 @@ Narzędzia do kodeka obrazów WebP.
 %configure \
 	--disable-silent-rules \
 	--enable-libwebpdemux \
+	--enable-libwebpextras \
 	--enable-libwebpmux
 %{__make}
 
@@ -100,26 +101,31 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING ChangeLog NEWS PATENTS README
 %attr(755,root,root) %{_libdir}/libwebp.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libwebp.so.5
+%attr(755,root,root) %ghost %{_libdir}/libwebp.so.6
 %attr(755,root,root) %{_libdir}/libwebpdemux.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libwebpdemux.so.1
+%attr(755,root,root) %ghost %{_libdir}/libwebpdemux.so.2
+%attr(755,root,root) %{_libdir}/libwebpextras.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libwebpextras.so.0
 %attr(755,root,root) %{_libdir}/libwebpmux.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libwebpmux.so.1
+%attr(755,root,root) %ghost %{_libdir}/libwebpmux.so.2
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libwebp.so
 %attr(755,root,root) %{_libdir}/libwebpdemux.so
+%attr(755,root,root) %{_libdir}/libwebpextras.so
 %attr(755,root,root) %{_libdir}/libwebpmux.so
 %{_includedir}/webp
 %{_pkgconfigdir}/libwebp.pc
 %{_pkgconfigdir}/libwebpdemux.pc
+%{_pkgconfigdir}/libwebpextras.pc
 %{_pkgconfigdir}/libwebpmux.pc
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libwebp.a
 %{_libdir}/libwebpdemux.a
+%{_libdir}/libwebpextras.a
 %{_libdir}/libwebpmux.a
 
 %files progs
