@@ -5,13 +5,13 @@
 Summary:	WebP image codec libraries
 Summary(pl.UTF-8):	Biblioteki do kodeka obrazów WebP
 Name:		libwebp
-Version:	0.5.2
+Version:	0.6.0
 Release:	1
 License:	BSD
 Group:		Libraries
 #Source0Download: http://downloads.webmproject.org/releases/webp/index.html
 Source0:	http://downloads.webmproject.org/releases/webp/%{name}-%{version}.tar.gz
-# Source0-md5:	6f36b38c2483b32906f946a621eb0c2e
+# Source0-md5:	19a6e926ab1721268df03161b84bb4a0
 URL:		https://developers.google.com/speed/webp/
 %{?with_opengl:BuildRequires:	OpenGL-devel}
 %{?with_opengl:BuildRequires:	OpenGL-glut-devel}
@@ -101,31 +101,26 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING ChangeLog NEWS PATENTS README
 %attr(755,root,root) %{_libdir}/libwebp.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libwebp.so.6
+%attr(755,root,root) %ghost %{_libdir}/libwebp.so.7
 %attr(755,root,root) %{_libdir}/libwebpdemux.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libwebpdemux.so.2
-%attr(755,root,root) %{_libdir}/libwebpextras.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libwebpextras.so.0
 %attr(755,root,root) %{_libdir}/libwebpmux.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libwebpmux.so.2
+%attr(755,root,root) %ghost %{_libdir}/libwebpmux.so.3
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libwebp.so
 %attr(755,root,root) %{_libdir}/libwebpdemux.so
-%attr(755,root,root) %{_libdir}/libwebpextras.so
 %attr(755,root,root) %{_libdir}/libwebpmux.so
 %{_includedir}/webp
 %{_pkgconfigdir}/libwebp.pc
 %{_pkgconfigdir}/libwebpdemux.pc
-%{_pkgconfigdir}/libwebpextras.pc
 %{_pkgconfigdir}/libwebpmux.pc
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libwebp.a
 %{_libdir}/libwebpdemux.a
-%{_libdir}/libwebpextras.a
 %{_libdir}/libwebpmux.a
 
 %files progs
@@ -133,6 +128,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/cwebp
 %attr(755,root,root) %{_bindir}/dwebp
 %attr(755,root,root) %{_bindir}/gif2webp
+%attr(755,root,root) %{_bindir}/img2webp
 %{?with_opengl:%attr(755,root,root) %{_bindir}/vwebp}
 %attr(755,root,root) %{_bindir}/webpmux
 %{_mandir}/man1/cwebp.1*
