@@ -5,13 +5,13 @@
 Summary:	WebP image codec libraries
 Summary(pl.UTF-8):	Biblioteki do kodeka obrazów WebP
 Name:		libwebp
-Version:	0.6.0
+Version:	0.6.1
 Release:	1
 License:	BSD
 Group:		Libraries
 #Source0Download: http://downloads.webmproject.org/releases/webp/index.html
 Source0:	http://downloads.webmproject.org/releases/webp/%{name}-%{version}.tar.gz
-# Source0-md5:	19a6e926ab1721268df03161b84bb4a0
+# Source0-md5:	b49ce9c3e3e9acae4d91bca44bb85a72
 URL:		https://developers.google.com/speed/webp/
 %{?with_opengl:BuildRequires:	OpenGL-devel}
 %{?with_opengl:BuildRequires:	OpenGL-glut-devel}
@@ -130,9 +130,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gif2webp
 %attr(755,root,root) %{_bindir}/img2webp
 %{?with_opengl:%attr(755,root,root) %{_bindir}/vwebp}
+%attr(755,root,root) %{_bindir}/webpinfo
 %attr(755,root,root) %{_bindir}/webpmux
 %{_mandir}/man1/cwebp.1*
 %{_mandir}/man1/dwebp.1*
 %{_mandir}/man1/gif2webp.1*
 %{?with_opengl:%{_mandir}/man1/vwebp.1*}
+%{_mandir}/man1/webpinfo.1*
 %{_mandir}/man1/webpmux.1*
