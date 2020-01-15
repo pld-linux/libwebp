@@ -1,0 +1,52 @@
+--- libwebp-1.1.0/examples/Makefile.am.orig	2019-12-21 14:37:43.000000000 +0100
++++ libwebp-1.1.0/examples/Makefile.am	2020-01-15 05:32:27.958820989 +0100
+@@ -34,6 +34,11 @@
+ anim_diff_LDADD += ../src/demux/libwebpdemux.la
+ anim_diff_LDADD += libexample_util.la
+ anim_diff_LDADD += ../imageio/libimageio_util.la
++if BUILD_LIBWEBPDECODER
++  anim_diff_LDADD += ../src/libwebpdecoder.la
++else
++  anim_diff_LDADD += ../src/libwebp.la
++endif
+ anim_diff_LDADD += $(GIF_LIBS) -lm
+ 
+ anim_dump_SOURCES = anim_dump.c anim_util.c anim_util.h gifdec.c gifdec.h
+@@ -44,6 +49,11 @@
+ anim_dump_LDADD += libexample_util.la
+ anim_dump_LDADD += ../imageio/libimageio_util.la
+ anim_dump_LDADD += ../imageio/libimageenc.la
++if BUILD_LIBWEBPDECODER
++  anim_dump_LDADD += ../src/libwebpdecoder.la
++else
++  anim_dump_LDADD += ../src/libwebp.la
++endif
+ anim_dump_LDADD += $(PNG_LIBS) $(GIF_LIBS) $(TIFF_LIBS) -lm
+ 
+ cwebp_SOURCES  = cwebp.c stopwatch.h
+@@ -81,6 +91,11 @@
+ vwebp_LDADD += libexample_util.la
+ vwebp_LDADD += ../imageio/libimageio_util.la
+ vwebp_LDADD += ../src/demux/libwebpdemux.la
++if BUILD_LIBWEBPDECODER
++  vwebp_LDADD += ../src/libwebpdecoder.la
++else
++  vwebp_LDADD += ../src/libwebp.la
++endif
+ vwebp_LDADD += $(GL_LIBS)
+ 
+ webpmux_SOURCES = webpmux.c
+@@ -107,13 +122,3 @@
+ webpinfo_LDADD += libexample_util.la
+ webpinfo_LDADD += ../imageio/libimageio_util.la
+ webpinfo_LDADD += ../src/libwebp.la
+-
+-if BUILD_LIBWEBPDECODER
+-  anim_diff_LDADD += ../src/libwebpdecoder.la
+-  anim_dump_LDADD += ../src/libwebpdecoder.la
+-  vwebp_LDADD += ../src/libwebpdecoder.la
+-else
+-  anim_diff_LDADD += ../src/libwebp.la
+-  anim_dump_LDADD += ../src/libwebp.la
+-  vwebp_LDADD += ../src/libwebp.la
+-endif
