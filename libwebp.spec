@@ -5,13 +5,13 @@
 Summary:	WebP image codec libraries
 Summary(pl.UTF-8):	Biblioteki do kodeka obrazów WebP
 Name:		libwebp
-Version:	1.2.4
-Release:	2
+Version:	1.3.0
+Release:	1
 License:	BSD
 Group:		Libraries
 #Source0Download: http://downloads.webmproject.org/releases/webp/index.html
 Source0:	http://downloads.webmproject.org/releases/webp/%{name}-%{version}.tar.gz
-# Source0-md5:	a80a95461a751118bb7d457b1afca50d
+# Source0-md5:	994cf2efb664ef5140fa0b56b83fa721
 Patch0:		%{name}-link.patch
 URL:		https://developers.google.com/speed/webp/
 %{?with_opengl:BuildRequires:	OpenGL-devel}
@@ -23,6 +23,7 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	libtool >= 2:2.2
+Requires:	libsharpyuv = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -67,6 +68,40 @@ WebP image codec tools.
 %description progs -l pl.UTF-8
 Narzędzia do kodeka obrazów WebP.
 
+%package -n libsharpyuv
+Summary:	Library for high quality RGB to YUV conversion
+Summary(pl.UTF-8):	Biblioteka do wysokiej jakości konwersji z RGB do YUV
+
+%description -n libsharpyuv
+Library for high quality RGB to YUV conversion.
+
+%description -n libsharpyuv -l pl.UTF-8
+Biblioteka do wysokiej jakości konwersji z RGB do YUV.
+
+%package -n libsharpyuv-devel
+Summary:	Header files for Sharp YUV library
+Summary(pl.UTF-8):	Pliki nagłówkowe bibliotki Sharp YUV
+Group:		Development/Libraries
+Requires:	libsharpyuv = %{version}-%{release}
+
+%description -n libsharpyuv-devel
+Header files for Sharp YUV library.
+
+%description -n libsharpyuv-devel -l pl.UTF-8
+Pliki nagłówkowe bibliotki Sharp YUV.
+
+%package -n libsharpyuv-static
+Summary:	Static Sharp YUV library
+Summary(pl.UTF-8):	Statyczna biblioteka Sharp YUV
+Group:		Development/Libraries
+Requires:	libsharpyuv-devel = %{version}-%{release}
+
+%description -n libsharpyuv-static
+Static Sharp YUV library.
+
+%description -n libsharpyuv-static -l pl.UTF-8
+Statyczna biblioteka Sharp YUV.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -91,13 +126,16 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 # obsoleted by pkgconfig
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/libwebp*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/lib{webp*,sharpyuv}.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
+
+%post	-n libsharpyuv -p /sbin/ldconfig
+%postun	-n libsharpyuv -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
@@ -141,3 +179,18 @@ rm -rf $RPM_BUILD_ROOT
 %{?with_opengl:%{_mandir}/man1/vwebp.1*}
 %{_mandir}/man1/webpinfo.1*
 %{_mandir}/man1/webpmux.1*
+
+%files -n libsharpyuv
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libsharpyuv.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libsharpyuv.so.0
+
+%files -n libsharpyuv-devel
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libsharpyuv.so
+%{_includedir}/webp
+%{_pkgconfigdir}/libsharpyuv.pc
+
+%files -n libsharpyuv-static
+%defattr(644,root,root,755)
+%{_libdir}/libsharpyuv.a
