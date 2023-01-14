@@ -37,6 +37,7 @@ Summary:	Header files for WebP libraries
 Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek WebP
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	libsharpyuv-devel = %{version}-%{release}
 
 %description devel
 Header files for WebP libraries.
@@ -71,6 +72,7 @@ Narzędzia do kodeka obrazów WebP.
 %package -n libsharpyuv
 Summary:	Library for high quality RGB to YUV conversion
 Summary(pl.UTF-8):	Biblioteka do wysokiej jakości konwersji z RGB do YUV
+Group:		Libraries
 
 %description -n libsharpyuv
 Library for high quality RGB to YUV conversion.
