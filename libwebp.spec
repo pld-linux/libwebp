@@ -6,7 +6,7 @@ Summary:	WebP image codec libraries
 Summary(pl.UTF-8):	Biblioteki do kodeka obrazów WebP
 Name:		libwebp
 Version:	1.3.1
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries
 #Source0Download: http://downloads.webmproject.org/releases/webp/index.html
@@ -154,7 +154,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libwebp.so
 %attr(755,root,root) %{_libdir}/libwebpdemux.so
 %attr(755,root,root) %{_libdir}/libwebpmux.so
-%{_includedir}/webp
+%{_includedir}/webp/*.h
 %{_pkgconfigdir}/libwebp.pc
 %{_pkgconfigdir}/libwebpdemux.pc
 %{_pkgconfigdir}/libwebpmux.pc
@@ -190,7 +190,8 @@ rm -rf $RPM_BUILD_ROOT
 %files -n libsharpyuv-devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libsharpyuv.so
-%{_includedir}/webp
+%dir %{_includedir}/webp
+%{_includedir}/webp/sharpyuv
 %{_pkgconfigdir}/libsharpyuv.pc
 
 %files -n libsharpyuv-static
