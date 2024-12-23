@@ -1,6 +1,7 @@
 #
 # Conditional build:
-%bcond_without	opengl	# OpenGL-based visualizer
+%bcond_without	opengl		# OpenGL-based visualizer
+%bcond_without	static_libs	# static libraries
 #
 Summary:	WebP image codec libraries
 Summary(pl.UTF-8):	Biblioteki do kodeka obrazów WebP
@@ -23,6 +24,7 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	libtool >= 2:2.2
+BuildRequires:	rpmbuild(macros) >= 1.527
 Requires:	libsharpyuv = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -116,6 +118,7 @@ Statyczna biblioteka Sharp YUV.
 %{__automake}
 %configure \
 	--disable-silent-rules \
+	%{__enable_disable static_libs static} \
 	--enable-libwebpdemux \
 	--enable-libwebpextras \
 	--enable-libwebpmux
@@ -159,11 +162,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgconfigdir}/libwebpdemux.pc
 %{_pkgconfigdir}/libwebpmux.pc
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libwebp.a
 %{_libdir}/libwebpdemux.a
 %{_libdir}/libwebpmux.a
+%endif
 
 %files progs
 %defattr(644,root,root,755)
@@ -194,6 +199,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/webp/sharpyuv
 %{_pkgconfigdir}/libsharpyuv.pc
 
+%if %{with static_libs}
 %files -n libsharpyuv-static
 %defattr(644,root,root,755)
 %{_libdir}/libsharpyuv.a
+%endif
